@@ -5,7 +5,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  
 
 /* ================================================================
    CSC ANNA NAGAR — Contact Page
@@ -142,7 +141,6 @@
   50%       { transform: translateX(-50%) translateY(8px); }
 }
 
-/* ── Main Section ────────────────────────────────────────────── */
 /* =========================================
    CONTACT PAGE
 =========================================*/
@@ -150,63 +148,54 @@
 .contact-top {
   width: 100%;
   background: #f3f6fb;
-
   padding: 45px 20px 30px;
-
   box-sizing: border-box;
 }
 .contact-top-inner {
-    max-width: 1100px;
-    margin:  0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
 }
 
 .contact-heading {
-    flex: 0 1 500px;
+  flex: 0 1 500px;
 }
 
 .contact-heading span {
-    font-size: 12px;
-    font-weight: 700;
-    color: #193b79;
+  font-size: 12px;
+  font-weight: 700;
+  color: #193b79;
 }
 
 .contact-heading h1 {
-    margin: 10px 0;
-
-    font-size: 42px;
-    line-height: 1.05;
-
-    color: #071d43;
+  margin: 10px 0;
+  font-size: 42px;
+  line-height: 1.05;
+  color: #071d43;
 }
 
 .contact-heading p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #222;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #222;
 }
 
 .contact-image {
-    width: 330px;
-    height: 195px;
-    display: center;
-    border-radius: 12px;
-    flex-shrink: 0;
-
-    overflow: hidden;
+  width: 330px;
+  height: 195px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .contact-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 
@@ -215,55 +204,49 @@
 ========================================= */
 
 .contact-info-bar {
-    max-width: 1100px;
-
-    margin: 30px auto 0;
-
-    padding: 15px;
-
-    background: white;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    border-radius: 10px;
-
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  max-width: 1100px;
+  margin: 30px auto 0;
+  padding: 15px;
+  background: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
 
 .contact-info-item {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 8px 15px;
-
-    border-right: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 15px;
+  border-right: 1px solid #ddd;
 }
 
 .contact-info-item:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .contact-info-item i {
-    font-size: 22px;
-
-    color: #f2c300;
+  font-size: 22px;
+  color: #f2c300;
 }
 
+.contact-info-item h3,
 .contact-info-item h4 {
-    font-size: 11px;
-
-    color: #173774;
-
-    margin-bottom: 5px;
+  font-size: 11px;
+  color: #173774;
+  margin-bottom: 5px;
 }
 
 .contact-info-item p {
-    font-size: 11px;
-
-    color: #555;
+  font-size: 11px;
+  color: #555;
+}
+.contact-info-item p a,
+.contact-info-item > div > a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 11px;
 }
 
 
@@ -272,134 +255,109 @@
 ========================================= */
 
 .contact-message-section {
-    background: #f3f6fb;
-
-    padding: 35px 7%;
+  background: #f3f6fb;
+  padding: 35px 7%;
 }
 
 .contact-message-wrapper {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 
 /* FORM CARD */
 
 .message-card {
-    background: white;
-
-    padding: 22px;
-
-    border-radius: 10px;
-
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
 
 .message-card h2 {
-    color: #071d43;
-
-    font-size: 23px;
-
-    margin-bottom: 15px;
+  color: #071d43;
+  font-size: 23px;
+  margin-bottom: 15px;
 }
 
 .input-row {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .input-group {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .input-group label {
-    display: block;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    margin-bottom: 5px;
-
-    color: #222;
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #222;
 }
 
 .input-group label span {
-    color: red;
+  color: red;
 }
 
 .input-group input,
 .input-group select,
 .input-group textarea {
-    width: 100%;
-
-    padding: 9px;
-
-    border: 1px solid #cfd5df;
-
-    border-radius: 5px;
-
-    outline: none;
-
-    font-size: 12px;
-
-    background: white;
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #cfd5df;
+  border-radius: 5px;
+  outline: none;
+  font-size: 12px;
+  background: white;
+  box-sizing: border-box;
 }
 
 .input-group input:focus,
 .input-group select:focus,
 .input-group textarea:focus {
-    border-color: #173774;
+  border-color: #173774;
 }
 
 .input-group textarea {
-    height: 85px;
+  height: 85px;
+  resize: none;
+}
 
-    resize: none;
+.field-error {
+  display: block;
+  color: red;
+  font-size: 11px;
+  min-height: 14px;
+  margin-top: 3px;
 }
 
 .send-message-btn {
-    width: 100%;
-
-    border: none;
-
-    background: #ffca05;
-
-    color: #111;
-
-    padding: 11px;
-
-    border-radius: 5px;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #ffca05;
+  color: #111;
+  padding: 11px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .send-message-btn:hover {
-    background: #f1bb00;
+  background: #f1bb00;
 }
 
 .form-note {
-    text-align: center;
-
-    font-size: 9px;
-
-    color: #777;
-
-    margin-top: 7px;
+  text-align: center;
+  font-size: 9px;
+  color: #777;
+  margin-top: 7px;
 }
 
 
@@ -408,61 +366,44 @@
 ========================================= */
 
 .help-card {
-    background: #071f4b;
-
-    color: white;
-
-    padding: 25px;
-
-    border-radius: 10px;
+  background: #071f4b;
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
 }
 
 .help-card h2 {
-    font-size: 23px;
-
-    margin-bottom: 25px;
+  font-size: 23px;
+  margin-bottom: 25px;
 }
 
 .help-row {
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 12px;
-
-    margin-bottom: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
 .help-icon {
-    min-width: 35px;
-
-    height: 35px;
-
-    background: #f4c400;
-
-    color: #071f4b;
-
-    border-radius: 7px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
+  min-width: 35px;
+  height: 35px;
+  background: #f4c400;
+  color: #071f4b;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .help-row h3 {
-    font-size: 13px;
-
-    margin-bottom: 4px;
+  font-size: 13px;
+  margin-bottom: 4px;
 }
 
 .help-row p {
-    font-size: 11px;
-
-    line-height: 1.4;
-
-    color: #dce5f5;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #dce5f5;
 }
 
 
@@ -471,113 +412,85 @@
 ========================================= */
 
 .visit-section {
-    background: white;
-
-    padding: 40px 7%;
+  background: white;
+  padding: 40px 7%;
 }
 
 .visit-container {
-    max-width: 1100px;
-
-    margin: auto;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .visit-heading h2 {
-    font-size: 27px;
-
-    color: #071d43;
+  font-size: 27px;
+  color: #071d43;
 }
 
 .visit-heading p {
-    margin-top: 6px;
-
-    font-size: 13px;
-
-    color: #444;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #444;
 }
 
 .visit-wrapper {
-    display: grid;
-
-    grid-template-columns: 2fr 1fr;
-
-    gap: 15px;
-
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .map-area {
-    height: 200px;
-
-    background: #edf2f7;
-
-    border-radius: 8px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
+  height: 200px;
+  background: #edf2f7;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .map-area i {
-    font-size: 40px;
-
-    color: #071f4b;
-
-    margin-bottom: 8px;
+  font-size: 40px;
+  color: #071f4b;
+  margin-bottom: 8px;
 }
 
 .map-area h3 {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .map-area p {
-    font-size: 11px;
-
-    margin-top: 4px;
+  font-size: 11px;
+  margin-top: 4px;
 }
 
 .visit-details {
-    border: 1px solid #ddd;
-
-    border-radius: 8px;
-
-    padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 .visit-details h3 {
-    font-size: 13px;
-
-    margin-bottom: 5px;
+  font-size: 13px;
+  margin-bottom: 5px;
 }
 
 .visit-details p {
-    font-size: 11px;
-
-    color: #555;
-
-    margin-bottom: 15px;
+  font-size: 11px;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 .visit-details button {
-    border: none;
-
-    background: #071f4b;
-
-    color: white;
-
-    padding: 9px 15px;
-
-    border-radius: 5px;
-
-    font-size: 11px;
-
-    cursor: pointer;
+  border: none;
+  background: #071f4b;
+  color: white;
+  padding: 9px 15px;
+  border-radius: 5px;
+  font-size: 11px;
+  cursor: pointer;
 }
 
 
@@ -586,45 +499,32 @@
 ========================================= */
 
 .quick-answer-section {
-    background: #071f4b;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 30px 20px;
+  background: #071f4b;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
 }
 
 .quick-answer-section h2 {
-    font-size: 23px;
+  font-size: 23px;
 }
 
 .quick-answer-section p {
-    font-size: 12px;
-
-    margin: 7px 0 15px;
-
-    color: #dce5f5;
+  font-size: 12px;
+  margin: 7px 0 15px;
+  color: #dce5f5;
 }
 
 .quick-buttons a {
-    display: inline-block;
-
-    text-decoration: none;
-
-    background: #ffca05;
-
-    color: #111;
-
-    padding: 9px 20px;
-
-    border-radius: 5px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    margin: 0 3px;
+  display: inline-block;
+  text-decoration: none;
+  background: #ffca05;
+  color: #111;
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 3px;
 }
 
 
@@ -633,51 +533,37 @@
 ========================================= */
 
 .faq-section {
-    background: #f3f6fb;
-
-    padding: 40px 20px;
+  background: #f3f6fb;
+  padding: 40px 20px;
 }
 
 .faq-container {
-    max-width: 950px;
-
-    margin: auto;
+  max-width: 950px;
+  margin: auto;
 }
 
 .faq-container h2 {
-    color: #071d43;
-
-    font-size: 25px;
-
-    margin-bottom: 18px;
+  color: #071d43;
+  font-size: 25px;
+  margin-bottom: 18px;
 }
 
 .faq-item {
-    background: white;
-
-    border: 1px solid #ddd;
-
-    border-radius: 5px;
-
-    padding: 14px 15px;
-
-    margin-bottom: 7px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    font-size: 12px;
-
-    font-weight: 600;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 14px 15px;
+  margin-bottom: 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .faq-item b {
-    font-size: 18px;
-
-    color: #555;
+  font-size: 18px;
+  color: #555;
 }
 
 
@@ -687,41 +573,39 @@
 
 @media (max-width: 768px) {
 
-    .contact-top-inner {
-        flex-direction: column;
+  .contact-top-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-        align-items: flex-start;
-    }
+  .contact-image {
+    width: 100%;
+  }
 
-    .contact-image {
-        width: 100%;
-    }
+  .contact-info-bar {
+    grid-template-columns: 1fr;
+  }
 
-    .contact-info-bar {
-        grid-template-columns: 1fr;
-    }
+  .contact-info-item {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .contact-info-item {
-        border-right: none;
+  .contact-info-item:last-child {
+    border-bottom: none;
+  }
 
-        border-bottom: 1px solid #ddd;
-    }
+  .contact-message-wrapper {
+    grid-template-columns: 1fr;
+  }
 
-    .contact-info-item:last-child {
-        border-bottom: none;
-    }
+  .input-row {
+    grid-template-columns: 1fr;
+  }
 
-    .contact-message-wrapper {
-        grid-template-columns: 1fr;
-    }
-
-    .input-row {
-        grid-template-columns: 1fr;
-    }
-
-    .visit-wrapper {
-        grid-template-columns: 1fr;
-    }
+  .visit-wrapper {
+    grid-template-columns: 1fr;
+  }
 
 }
 
@@ -744,17 +628,13 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .contact-wrapper { grid-template-columns: 1fr; gap: 2.2rem; }
-  .info-panel { position: static; }
-  .form-row { grid-template-columns: 1fr; }
-}
 @media (max-width: 560px) {
   .contact-hero { padding: 70px 1.5rem 60px; }
-  .contact-section { padding: 50px 1.2rem; }
-  .form-card { padding: 2rem 1.5rem; }
-  .social-row { flex-wrap: wrap; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 </style>
@@ -793,8 +673,6 @@
 {% endif %}
 
 
-<!-- ── MAIN CONTACT SECTION ───────────────────────────────────── -->
-
 <!-- ================= CONTACT TOP ================= -->
 
 <section class="contact-top">
@@ -818,10 +696,7 @@
         </div>
 
         <div class="contact-image">
-
-            <img src="{% static 'main/images/intro.jpeg' %}"
-                 alt="Contact CSC">
-
+            <img src="{% static 'main/images/intro.jpeg' %}" alt="Contact CSC">
         </div>
 
     </div>
@@ -832,56 +707,43 @@
     <div class="contact-info-bar">
 
         <div class="contact-info-item">
-
             <i class="fa-solid fa-location-dot"></i>
-
             <div>
                 <h3>VISIT CSC</h3>
-                <p>ANNA NAGAR</p>
+                <a href="https://www.google.com/maps?q=CSC+Computer+Education,+AP-814,+G+Block,+1st+Street,+Anna+Nagar,+Chennai+600040"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="visit-csc-btn">Anna Nagar</a>
             </div>
-
         </div>
 
-
         <div class="contact-info-item">
-
             <i class="fa-solid fa-phone"></i>
-
             <div>
                 <h3>CALL US</h3>
-                <p>+91 9940909056</p>
+                <p><a href="tel:+919940909056">+91 9940909056</a></p>
             </div>
-
         </div>
 
-
         <div class="contact-info-item">
-
             <i class="fa-solid fa-envelope"></i>
-
             <div>
                 <h3>EMAIL US</h3>
-                <p>annanagarcsc2024@gmail.com</p>
+                <p><a href="mailto:annanagarcsc2024@gmail.com">annanagarcsc2024@gmail.com</a></p>
             </div>
-
         </div>
 
-
         <div class="contact-info-item">
-
             <i class="fa-brands fa-whatsapp"></i>
-
             <div>
                 <h3>WHATSAPP</h3>
-                <p>+91 9940909056</p>
+                <p><a href="https://wa.me/919940909056" target="_blank" rel="noopener noreferrer">+91 9940909056</a></p>
             </div>
-
         </div>
 
     </div>
 
 </section>
-
 
 
 <!-- ================= MESSAGE + HELP ================= -->
@@ -890,44 +752,43 @@
 
     <div class="contact-message-wrapper">
 
-
         <!-- ================= FORM ================= -->
 
         <div class="message-card">
 
             <h2>Send Us a Message</h2>
 
-            <form method="POST">
+            <form method="POST" id="cscContactForm" novalidate>
 
                 {% csrf_token %}
 
                 <div class="input-row">
 
+                    <!-- NAME: alphabets + space only, max 25 -->
                     <div class="input-group">
-
-                        <label>
-                            Full Name <span>*</span>
-                        </label>
-
+                        <label for="name">Full Name <span>*</span></label>
                         <input type="text"
+                               id="name"
                                name="name"
                                placeholder="Full Name"
+                               maxlength="25"
+                               autocomplete="name"
+                               oninput="validateName(this)"
                                required>
-
+                        <small id="nameError" class="field-error"></small>
                     </div>
 
-
+                    <!-- EMAIL -->
                     <div class="input-group">
-
-                        <label>
-                            Email Address <span>*</span>
-                        </label>
-
+                        <label for="email">Email Address <span>*</span></label>
                         <input type="email"
+                               id="email"
                                name="email"
                                placeholder="Email Address"
+                               autocomplete="email"
+                               oninput="validateEmail(this)"
                                required>
-
+                        <small id="emailError" class="field-error"></small>
                     </div>
 
                 </div>
@@ -935,77 +796,60 @@
 
                 <div class="input-row">
 
+                    <!-- PHONE: 10 digits, starts with 6-9 -->
                     <div class="input-group">
-
-                        <label>
-                            Mobile Number <span>*</span>
-                        </label>
-
+                        <label for="phone">Mobile Number <span>*</span></label>
                         <input type="text"
+                               id="phone"
                                name="phone"
-                               placeholder="Mobile Number"
+                               placeholder="Enter 10 digit mobile number"
+                               inputmode="numeric"
+                               autocomplete="tel-national"
+                               oninput="validatePhone(this)"
                                required>
-
+                        <small id="phoneError" class="field-error"></small>
                     </div>
 
-
                     <div class="input-group">
-
-                        <label>
-                            Subject <span>*</span>
-                        </label>
-
-                        <select name="subject">
-
+                        <label for="subject">Subject <span>*</span></label>
+                        <select name="subject" id="subject">
                             <option>Course Enquiry</option>
                             <option>Workshop</option>
                             <option>Placement Support</option>
                             <option>Career</option>
                             <option>Admission / Registration</option>
                             <option>General Enquiry</option>
-
                         </select>
-
                     </div>
 
                 </div>
 
 
                 <div class="input-group">
-
-                    <label>Select Enquiry Type</label>
-
-                    <select name="enquiry">
-
+                    <label for="enquiry">Select Enquiry Type</label>
+                    <select name="enquiry" id="enquiry">
                         <option>Course Enquiry</option>
                         <option>Workshop</option>
                         <option>Placement Support</option>
                         <option>Career</option>
                         <option>Admission / Registration</option>
                         <option>General Enquiry</option>
-
                     </select>
-
                 </div>
 
 
                 <div class="input-group">
-
-                    <label>
-                        Message <span>*</span>
-                    </label>
-
+                    <label for="message">Message <span>*</span></label>
                     <textarea name="message"
+                              id="message"
                               placeholder="Write your message here..."
                               required></textarea>
-
                 </div>
 
 
-                <button type="submit" class="send-message-btn">
+                <button type="submit" id="submitBtn" class="send-message-btn">
                     Send Message →
                 </button>
-
 
                 <p class="form-note">
                     Your information will only be used to respond to your enquiry.
@@ -1016,77 +860,42 @@
         </div>
 
 
-
         <!-- ================= HELP ================= -->
 
         <div class="help-card">
 
             <h2>How Can We Help?</h2>
 
-
             <div class="help-row">
-
-                <div class="help-icon">
-                    <i class="fa-solid fa-book"></i>
-                </div>
-
+                <div class="help-icon"><i class="fa-solid fa-book"></i></div>
                 <div>
                     <h3>Course Enquiry</h3>
-                    <p>
-                        Get information about courses
-                        and learning options
-                    </p>
+                    <p>Get information about courses and learning options</p>
                 </div>
-
             </div>
 
-
             <div class="help-row">
-
-                <div class="help-icon">
-                    <i class="fa-solid fa-user-plus"></i>
-                </div>
-
+                <div class="help-icon"><i class="fa-solid fa-user-plus"></i></div>
                 <div>
                     <h3>Admission & Registration</h3>
-                    <p>
-                        Get help with the registration process
-                    </p>
+                    <p>Get help with the registration process</p>
                 </div>
-
             </div>
 
-
             <div class="help-row">
-
-                <div class="help-icon">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-
+                <div class="help-icon"><i class="fa-solid fa-briefcase"></i></div>
                 <div>
                     <h3>Placement Support</h3>
-                    <p>
-                        Learn about career preparation
-                        and placement support
-                    </p>
+                    <p>Learn about career preparation and placement support</p>
                 </div>
-
             </div>
 
-
             <div class="help-row">
-
-                <div class="help-icon">
-                    <i class="fa-solid fa-comment"></i>
-                </div>
-
+                <div class="help-icon"><i class="fa-solid fa-comment"></i></div>
                 <div>
                     <h3>General Enquiry</h3>
-                    <p>
-                        Ask us anything about CSC
-                    </p>
+                    <p>Ask us anything about CSC</p>
                 </div>
-
             </div>
 
         </div>
@@ -1096,7 +905,6 @@
 </section>
 
 
-
 <!-- ================= VISIT CSC ================= -->
 
 <section class="visit-section">
@@ -1104,51 +912,40 @@
     <div class="visit-container">
 
         <div class="visit-heading">
-
             <h2>Visit CSC</h2>
-
             <p>
                 Come and meet us to learn more about our courses,
                 training and learning environment.
             </p>
-
         </div>
-
 
         <div class="visit-wrapper">
 
             <div class="map-area">
-
-    <iframe
-        src="https://www.google.com/maps?q=CSC+Computer+Education,+AP-814,+G+Block,+1st+Street,+Anna+Nagar,+Chennai+600040&output=embed"
-        width="100%"
-        height="100%"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-    </iframe>
-
-     
+                <iframe
+                    src="https://www.google.com/maps?q=CSC+Computer+Education,+AP-814,+G+Block,+1st+Street,+Anna+Nagar,+Chennai+600040&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
             </div>
-
 
             <div class="visit-details">
 
                 <h3>Visit Us</h3>
-
                 <p>AP 814, G Block, 1st Street, near Anna Nagar Tower,<br>
-                  Metro Station, Anna Nagar, Chennai-600040.
+                   Metro Station, Anna Nagar, Chennai-600040.
                 </p>
-
 
                 <h3>Opening Hours</h3>
-
                 <p>Mon-Sat 9:00 AM - 7:00 PM<br>
-                  Sunday-Closed
+                   Sunday-Closed
                 </p>
 
-
-                <button>
+                <button type="button"
+                        onclick="window.open('https://www.google.com/maps?q=CSC+Computer+Education,+AP-814,+G+Block,+1st+Street,+Anna+Nagar,+Chennai+600040', '_blank')">
                     Get Directions →
                 </button>
 
@@ -1161,31 +958,20 @@
 </section>
 
 
-
 <!-- ================= QUICK ANSWER ================= -->
 
 <section class="quick-answer-section">
 
     <h2>Need a Quick Answer?</h2>
 
-    <p>
-        Reach out directly and our team will guide you.
-    </p>
+    <p>Reach out directly and our team will guide you.</p>
 
     <div class="quick-buttons">
-
-        <a href="tel:+91 9940909056">
-            Call CSC
-        </a>
-
-        <a href="https://wa.me/91 ~">
-            WhatsApp Us
-        </a>
-
+        <a href="tel:+919940909056">Call CSC</a>
+        <a href="https://wa.me/919940909056" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
     </div>
 
 </section>
-
 
 
 <!-- ================= FAQ ================= -->
@@ -1196,66 +982,157 @@
 
         <h2>Frequently Asked Questions</h2>
 
-
         <div class="faq-item">
-
-            <span>
-                What courses does CSC offer?
-            </span>
-
+            <span>What courses does CSC offer?</span>
             <b>+</b>
-
         </div>
 
-
         <div class="faq-item">
-
-            <span>
-                Can I visit CSC before registering?
-            </span>
-
+            <span>Can I visit CSC before registering?</span>
             <b>+</b>
-
         </div>
 
-
         <div class="faq-item">
-
-            <span>
-                How can I get placement support?
-            </span>
-
+            <span>How can I get placement support?</span>
             <b>+</b>
-
         </div>
 
-      </div>
+    </div>
 
 </section>
 
 
-
 <!-- ── JavaScript ─────────────────────────────────────────────── -->
 <script>
+/* ================= FORM VALIDATION ================= */
+
+// NAME: only alphabets + single spaces, max 25 chars
+function validateName(input) {
+    var error = document.getElementById("nameError");
+    var old = input.value;
+
+    var clean = old
+        .replace(/[^A-Za-z ]/g, "")   // remove everything except letters & space
+        .replace(/^\s+/, "")          // no leading space
+        .replace(/\s{2,}/g, " ")      // no double spaces
+        .slice(0, 40);                // max 40
+
+    input.value = clean;
+
+    if (old !== clean && old.length <= 40) {
+        error.textContent = "Only alphabets and spaces allowed (max 40 characters)";
+    } else if (old.length > 40) {
+        error.textContent = "Maximum 40 characters allowed";
+    } else {
+        error.textContent = "";
+    }
+}
+
+// PHONE: only digits, exactly 10, must start with 6/7/8/9
+function validatePhone(input) {
+    var error = document.getElementById("phoneError");
+    var old = input.value;
+
+    var clean = old.replace(/\D/g, "");
+
+    // handle pasted +91 / 91 prefix
+    if (clean.length === 12 && clean.indexOf("91") === 0) {
+        clean = clean.slice(2);
+    }
+
+    clean = clean.slice(0, 10);
+
+    // first digit must be 6-9
+    if (clean.length > 0 && !/^[6-9]/.test(clean)) {
+        input.value = "";
+        error.textContent = "Number must start with 6, 7, 8 or 9";
+        return;
+    }
+
+    input.value = clean;
+
+    if (/\D/.test(old.replace(/^\+?91/, "")) ) {
+        error.textContent = "Only numbers allowed";
+    } else if (clean.length > 0 && clean.length < 10) {
+        error.textContent = "Enter exactly 10 digits";
+    } else {
+        error.textContent = "";
+    }
+}
+
+// EMAIL: name@domain.tld  (.com, .in, .edu.in, .co.in, .ac.in, .org ...)
+// Allowed endings only: com, in, co.in, edu.in, ac.in, org, org.in, net, net.in, gov.in, edu, gov, info, biz, io, co, us, uk, ai
+var EMAIL_REGEX = /^[A-Za-z0-9]+([._%+-][A-Za-z0-9]+)*@([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+(com|in|org|net|edu|gov|info|biz|io|co|us|uk|ai)$/i;
+
+function validateEmail(input) {
+    var error = document.getElementById("emailError");
+
+    // remove spaces and characters that are never allowed in an email
+    var value = input.value.replace(/[^A-Za-z0-9@._%+-]/g, "");
+    input.value = value;
+
+    if (value === "") {
+        error.textContent = "";
+    } else if (value.indexOf("@") === -1) {
+        error.textContent = "Email must contain @";
+    } else if ((value.match(/@/g) || []).length > 1) {
+        error.textContent = "Only one @ is allowed";
+    } else if (/^@/.test(value) || /^[._%+-]/.test(value)) {
+        error.textContent = "Enter letters or numbers before @";
+    } else if (/@$/.test(value) || /@[^A-Za-z0-9]/.test(value)) {
+        error.textContent = "Enter your domain name after @ (e.g. gmail)";
+    } else if (!/@[^@]*\.[^@]*$/.test(value)) {
+        error.textContent = "Add a dot after the domain (e.g. gmail.com)";
+    } else if (!EMAIL_REGEX.test(value)) {
+        error.textContent = "Email must end with .com, .in, .co.in, .edu.in, .org, .net etc.";
+    } else {
+        error.textContent = "";
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ── Scroll reveal for cards ─────────────────────────────
-    const obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.c-card, .form-card').forEach(function (el) {
-        obs.observe(el);
-    });
-
-    // ── Submit loading state ────────────────────────────────
     var form = document.getElementById('cscContactForm');
     var btn  = document.getElementById('submitBtn');
+
+    // ── Final validation on submit (registered FIRST) ───────
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            var name  = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var phone = document.getElementById("phone").value;
+            var msg   = document.getElementById("message").value.trim();
+            var ok = true;
+
+            if (!/^[A-Za-z ]{1,40}$/.test(name)) {
+                document.getElementById("nameError").textContent =
+                    "Enter a valid name (alphabets and spaces only, max 40 characters)";
+                ok = false;
+            }
+            if (!EMAIL_REGEX.test(email)) {
+                document.getElementById("emailError").textContent =
+                    "Enter a valid email address";
+                ok = false;
+            }
+            if (!/^[6-9][0-9]{9}$/.test(phone)) {
+                document.getElementById("phoneError").textContent =
+                    "Enter a valid 10 digit number starting with 6, 7, 8 or 9";
+                ok = false;
+            }
+            if (!msg) {
+                document.getElementById("message").focus();
+                ok = false;
+            }
+
+            if (!ok) {
+                e.preventDefault();
+                e.stopImmediatePropagation();   // stops the "Sending..." state
+            }
+        });
+    }
+
+    // ── Submit loading state (registered SECOND) ────────────
     if (form && btn) {
         form.addEventListener('submit', function () {
             btn.innerHTML = 'Sending... <span style="display:inline-block;animation:spin 1s linear infinite">⟳</span>';
@@ -1274,27 +1151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 6000);
     });
 
-    // ── Add placeholders to Django form inputs ──────────────
-    var placeholders = {
-        'id_name':    'e.g. Ravi Kumar',
-        'id_phone':   'e.g. +91 98765 43210',
-        'id_email':   'e.g. your@email.com',
-        'id_subject': 'e.g. Query about Python Full Stack',
-        'id_message': 'Write your message here...',
-        'id_course':  '',
-    };
-    Object.keys(placeholders).forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el && placeholders[id]) el.setAttribute('placeholder', placeholders[id]);
-    });
 });
 </script>
-
-<style>
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-</style>
 
 {% endblock %}

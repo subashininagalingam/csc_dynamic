@@ -1,7 +1,10 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-`
+
+<!-- Font Awesome (icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <!-- ================= HERO SECTION (Slider + Demo Form) ================= -->
 
 <!--================= POPUP DEMO FORM ================= -->
@@ -68,7 +71,7 @@
     <h2>Popular Courses</h2>
 
     <div class="course-marquee">
-        <div class="marquee-track">
+        <div class="marquee-track{% if courses|length <= 5 %} static{% endif %}">
 
             {% for c in courses %}
             <div class="course-item">
@@ -77,17 +80,18 @@
             </div>
             {% endfor %}
 
-            <!-- Duplicate for smooth scrolling -->
+            <!-- Duplicate for smooth scrolling (only when there are enough courses) -->
+            {% if courses|length > 5 %}
             {% for c in courses %}
             <div class="course-item">
                 <img src="{{ c.image.url }}" alt="{{ c.title }}">
                 <p>{{ c.title }}</p>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>
------->
 
 
 <!-- ================= ACHIEVEMENTS SECTION ================= -->
@@ -220,7 +224,7 @@
     <div class="stats-container">
 
         <div class="stat-card reveal">
-            <div class="stat-icon">🎓</div>
+            <div class="stat-icon"><i class="fa-solid fa-graduation-cap icon-cap"></i></div>
             <div class="stat-num" data-target="1000" data-suffix="+">0+</div>
             <div class="stat-label">Successful Students</div>
         </div>
@@ -228,7 +232,7 @@
         <div class="stat-divider"></div>
 
         <div class="stat-card reveal">
-            <div class="stat-icon">📜</div>
+            <div class="stat-icon"><i class="fa-solid fa-scroll icon-scroll"></i></div>
             <div class="stat-num" data-target="500" data-suffix="+">0+</div>
             <div class="stat-label">Certifications</div>
         </div>
@@ -236,7 +240,7 @@
         <div class="stat-divider"></div>
 
         <div class="stat-card reveal">
-            <div class="stat-icon">🏢</div>
+            <div class="stat-icon"><i class="fa-solid fa-building icon-building"></i></div>
             <div class="stat-num" data-target="450" data-suffix="+">0+</div>
             <div class="stat-label">Branches</div>
         </div>
@@ -259,28 +263,28 @@
             <div class="contact-info">
 
                 <div class="info-box">
-                    <span class="icon">📍</span>
+                    <span class="icon"><i class="fa-solid fa-location-dot icon-loc"></i></span>
                     <div>
                         <h4>Location</h4>
-                        <p>AP-814, "G" Block, 1st Street,<br>
+                        <p><a href="https://www.google.com/maps?q=CSC+Computer+Education,+AP-814,+G+Block,+1st+Street,+Anna+Nagar,+Chennai+600040" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">AP-814, "G" Block, 1st Street,<br>
                               Near Anna Nagar Tower,<br>
-                              Anna Nagar, Chennai</p>
+                              Anna Nagar, Chennai</a></p>
                     </div>
                 </div>
 
                 <div class="info-box">
-                    <span class="icon">📞</span>
+                    <span class="icon"><i class="fa-solid fa-phone icon-phone"></i></span>
                     <div>
                         <h4>Phone</h4>
-                        <p>+91 9940909056</p>
+                        <p><a href="tel:+919940909056" style="color:inherit;text-decoration:none;">+91 9940909056</a></p>
                     </div>
                 </div>
 
                 <div class="info-box">
-                    <span class="icon">✉️</span>
+                    <span class="icon"><i class="fa-regular fa-envelope icon-mail"></i></span>
                     <div>
                         <h4>Email</h4>
-                        <p>annanagarcsc2024@gmail.com</p>
+                        <p><a href="mailto:annanagarcsc2024@gmail.com" style="color:inherit;text-decoration:none;">annanagarcsc2024@gmail.com</a></p>
                     </div>
                 </div>
 
@@ -288,15 +292,33 @@
 
             <!-- RIGHT FORM -->
             <div class="contact-form">
-                <form method="post" action="{% url 'contact' %}">
+                <form method="post" action="{% url 'contact' %}" id="homeContactForm" novalidate>
                     {% csrf_token %}
 
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    
-                    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                    <!-- NAME: alphabets + space only, max 25 -->
+                    <input type="text"
+                           id="homeName"
+                           name="name"
+                           placeholder="Your Name"
+                           maxlength="25"
+                           autocomplete="name"
+                           oninput="homeValidateName(this)"
+                           required>
+                    <small id="homeNameError" class="field-error"></small>
 
-                    <button type="submit" class="contact-btn">
+                    <!-- EMAIL: strict format -->
+                    <input type="email"
+                           id="homeEmail"
+                           name="email"
+                           placeholder="Your Email"
+                           autocomplete="email"
+                           oninput="homeValidateEmail(this)"
+                           required>
+                    <small id="homeEmailError" class="field-error"></small>
+
+                    <textarea name="message" id="homeMessage" rows="4" placeholder="Your Message" required></textarea>
+
+                    <button type="submit" class="contact-btn" id="homeSubmitBtn">
                         Send Message
                     </button>
                 </form>
@@ -306,6 +328,46 @@
     </div>
 </section>
 
+
+<style>
+/* Validation error text: takes NO space when empty */
+.contact-form .field-error {
+    display: block;
+    color: #e53935;
+    font-size: 12px;
+    line-height: 1.3;
+    margin-top: -0.5rem;   /* pull error closer to its input (form has 1rem gap) */
+}
+.contact-form .field-error:empty {
+    display: none;         /* no extra gap when there is no error */
+}
+
+/* Contact info icons: same box, same size as before, just icon instead of emoji */
+.info-box .icon {
+    width: 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* Stats icons: same size and bounce animation, gold colour */
+/* Icon colours = same colours the emoji had */
+.icon-loc      { color: #e53935; }   /* red pin */
+.icon-phone    { color: #d32f2f; }   /* red phone */
+.icon-mail     { color: #222222; }   /* white envelope, dark outline */
+.icon-cap      { color: #2b2b2b; filter: drop-shadow(0 0 1px rgba(255,255,255,0.9)); }  /* dark graduation cap */
+.icon-scroll   { color: #f3d9b1; }   /* beige scroll */
+.icon-building { color: #81d4fa; }   /* light blue building */
+
+/* Few courses: no scrolling, no duplicate, centered */
+.marquee-track.static {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+</style>
 
 <script src="{% static 'main/js/main.js' %}" defer></script>
 
@@ -336,6 +398,89 @@ document.addEventListener('DOMContentLoaded', function () {
     // tab-ku thirumbi vandhaa video continue aagum
     document.addEventListener('visibilitychange', function () {
         if (!document.hidden && video.paused) video.play().catch(function () {});
+    });
+});
+</script>
+
+<!-- ================= HOME FORM VALIDATION ================= -->
+<script>
+// Allowed endings: com, in, co.in, edu.in, ac.in, org, org.in, net, net.in, gov.in, edu, gov, info, biz, io, co, us, uk, ai
+var HOME_EMAIL_REGEX = /^[A-Za-z0-9]+([._%+-][A-Za-z0-9]+)*@([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+(com|in|org|net|edu|gov|info|biz|io|co|us|uk|ai)$/i;
+
+// NAME: only alphabets + single spaces, max 40
+function homeValidateName(input) {
+    var error = document.getElementById("homeNameError");
+    var old = input.value;
+
+    var clean = old
+        .replace(/[^A-Za-z ]/g, "")
+        .replace(/^\s+/, "")
+        .replace(/\s{2,}/g, " ")
+        .slice(0, 40);
+
+    input.value = clean;
+
+    if (old !== clean) {
+        error.textContent = "Only alphabets and spaces allowed (max 40 characters)";
+    } else {
+        error.textContent = "";
+    }
+}
+
+// EMAIL: name@domain.tld
+function homeValidateEmail(input) {
+    var error = document.getElementById("homeEmailError");
+
+    var value = input.value.replace(/[^A-Za-z0-9@._%+-]/g, "");
+    input.value = value;
+
+    if (value === "") {
+        error.textContent = "";
+    } else if (value.indexOf("@") === -1) {
+        error.textContent = "Email must contain @";
+    } else if ((value.match(/@/g) || []).length > 1) {
+        error.textContent = "Only one @ is allowed";
+    } else if (/^@/.test(value) || /^[._%+-]/.test(value)) {
+        error.textContent = "Enter letters or numbers before @";
+    } else if (/@$/.test(value) || /@[^A-Za-z0-9]/.test(value)) {
+        error.textContent = "Enter your domain name after @ (e.g. gmail)";
+    } else if (!/@[^@]*\.[^@]*$/.test(value)) {
+        error.textContent = "Add a dot after the domain (e.g. gmail.com)";
+    } else if (!HOME_EMAIL_REGEX.test(value)) {
+        error.textContent = "Email must end with .com, .in, .co.in, .edu.in, .org, .net etc.";
+    } else {
+        error.textContent = "";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('homeContactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        var name  = document.getElementById("homeName").value.trim();
+        var email = document.getElementById("homeEmail").value.trim();
+        var msg   = document.getElementById("homeMessage").value.trim();
+        var ok = true;
+
+        if (!/^[A-Za-z ]{1,40}$/.test(name)) {
+            document.getElementById("homeNameError").textContent =
+                "Enter a valid name (alphabets and spaces only, max 40 characters)";
+            ok = false;
+        }
+        if (!HOME_EMAIL_REGEX.test(email)) {
+            document.getElementById("homeEmailError").textContent =
+                "Enter a valid email (e.g. name@gmail.com)";
+            ok = false;
+        }
+        if (!msg) {
+            document.getElementById("homeMessage").focus();
+            ok = false;
+        }
+
+        if (!ok) {
+            e.preventDefault();
+        }
     });
 });
 </script>

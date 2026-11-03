@@ -514,6 +514,12 @@
     overflow: visible;
 }
 
+#wk-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .wk-about {
     margin-top: 16px;
     max-width: 680px;
@@ -781,6 +787,22 @@
 .wk-section {
     height: auto;
     overflow-y: visible;
+}
+
+.form-inline-error {
+    margin-top: 4px;
+    color: #b42318;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-inline-error:empty {
+    display: none;
+}
+
+.form-invalid {
+    border-color: #d92d20 !important;
+    background: #fff5f5 !important;
 }
 
 /* =====================================================

@@ -9,276 +9,335 @@
 
 {% block content %}
 
-<!-- COURSE HERO -->
-<section class="cd-hero">
+<div class="cd-page">
+<div class="cd-container">
 
-    <div class="cd-hero__content">
-        <span class="cd-badge">SOFTWARE DEVELOPMENT</span>
-        <h1>{{ course.name }}</h1>
+    <!-- ================= BREADCRUMB ================= -->
+    <nav class="cd-breadcrumb" aria-label="Breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="{% url 'courses' %}">Courses</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>{{ course.name }}</span>
+    </nav>
 
-        <p class="cd-hero__desc">{{ course.description }}</p>
 
-        <div class="cd-hero__features">
-            <span>✓ Practical Training</span>
-            <span>✓ Industry-Relevant Skills</span>
-            <span>✓ Project-Based Learning</span>
+    <!-- ================= HERO ================= -->
+    <section class="cd-hero">
+
+        <div class="cd-hero__content">
+            <span class="cd-badge"><i class="fa-solid fa-award"></i> PROFESSIONAL COURSE</span>
+
+            <h1>{{ course.name }}</h1>
+
+            <p class="cd-hero__desc">{{ course.description|truncatewords:40 }}</p>
+
+            <ul class="cd-chips">
+                <li><i class="fa-solid fa-laptop-code"></i> Practical Training</li>
+                <li><i class="fa-solid fa-diagram-project"></i> Project-Based Learning</li>
+                <li><i class="fa-solid fa-briefcase"></i> Industry-Relevant Skills</li>
+            </ul>
+
+            <div class="cd-hero__actions">
+                <a href="{% url 'book_course' course.id %}" class="cd-btn cd-btn--gold">
+                    Book This Course <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="{% url 'contact' %}" class="cd-btn cd-btn--ghost">
+                    Enquire Now
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="cd-hero__image">
-        {% if course.image %}
-            <img src="{{ course.image.url }}" alt="{{ course.name }}">
-        {% else %}
-            <img src="{% static 'main/images/sample.webp' %}" alt="{{ course.name }}">
-        {% endif %}
-    </div>
+        <div class="cd-hero__image">
+            {% if course.image %}
+                <img src="{{ course.image.url }}" alt="{{ course.name }}">
+            {% else %}
+                <img src="{% static 'main/images/sample.webp' %}" alt="{{ course.name }}">
+            {% endif %}
+        </div>
 
-</section>
+    </section>
 
-</section>
 
-<!-- MAIN CONTENT -->
-<main class="course-layout">
+    <!-- ================= QUICK FACTS STRIP ================= -->
+    <section class="cd-strip" aria-label="Course at a glance">
 
-    <div class="course-main">
+        <div class="cd-strip__item">
+            <span class="cd-strip__icon"><i class="fa-regular fa-clock"></i></span>
+            <div>
+                <small>Duration</small>
+                <strong>{{ course.duration }}</strong>
+            </div>
+        </div>
 
-        <!-- ABOUT COURSE -->
-        <section class="content-card">
+        <div class="cd-strip__item">
+            <span class="cd-strip__icon"><i class="fa-solid fa-bullseye"></i></span>
+            <div>
+                <small>Learning</small>
+                <strong>Practical Training</strong>
+            </div>
+        </div>
 
-            <h2>About This Course</h2>
+        <div class="cd-strip__item">
+            <span class="cd-strip__icon"><i class="fa-solid fa-building-columns"></i></span>
+            <div>
+                <small>Mode</small>
+                <strong>Contact Institute</strong>
+            </div>
+        </div>
 
-            <p class="section-description">
-                {{ course.description }}
-            </p>
+        <div class="cd-strip__item">
+            <span class="cd-strip__icon"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+            <div>
+                <small>Offer Fee</small>
+                <strong>₹{{ course.offer_fee|floatformat:0 }}
+                    {% if course.original_fee > course.offer_fee %}
+                        <del>₹{{ course.original_fee|floatformat:0 }}</del>
+                    {% endif %}
+                </strong>
+            </div>
+        </div>
 
-            <p class="section-description">
-                Learn through practical sessions, hands-on exercises
-                and projects designed to help you develop useful
-                industry skills.
-            </p>
+    </section>
 
-        </section>
 
-        <!-- COURSE HIGHLIGHTS -->
-        <section class="content-card">
+    <!-- ================= MAIN LAYOUT ================= -->
+    <div class="cd-layout">
 
-            <h2>Course Highlights</h2>
+        <!-- ========== LEFT : COURSE CONTENT ========== -->
+        <div class="cd-main">
 
-            <div class="highlight-grid">
+            <!-- IN-PAGE TABS -->
+            <nav class="cd-tabs" aria-label="Course sections">
+                <a href="#overview" class="active">Overview</a>
+                <a href="#highlights">Highlights</a>
+                <a href="#learn">What You'll Learn</a>
+                <a href="#roadmap">Roadmap</a>
+            </nav>
 
-                {% if course.highlights %}
+            <!-- ABOUT -->
+            <section class="cd-card" id="overview">
+                <h2><span class="cd-title-icon"><i class="fa-solid fa-circle-info"></i></span> About This Course</h2>
 
-                    {% for item in course.highlights.splitlines %}
-                        {% if item %}
-                            <div class="highlight-item">
-                                <span class="check-icon">✓</span>
-                                <span>{{ item }}</span>
-                            </div>
-                        {% endif %}
+                <p class="cd-text">{{ course.description }}</p>
+
+                <p class="cd-text">
+                    Learn through practical sessions, hands-on exercises and projects
+                    designed to help you develop useful industry skills.
+                </p>
+            </section>
+
+            <!-- HIGHLIGHTS -->
+            <section class="cd-card" id="highlights">
+                <h2><span class="cd-title-icon"><i class="fa-solid fa-star"></i></span> Course Highlights</h2>
+
+                <div class="cd-highlights">
+
+                    {% if course.highlights %}
+
+                        {% for item in course.highlights.splitlines %}
+                            {% if item %}
+                                <div class="cd-highlight">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span>{{ item }}</span>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="cd-highlight">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Practical Training</span>
+                        </div>
+                        <div class="cd-highlight">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Hands-on Projects</span>
+                        </div>
+                        <div class="cd-highlight">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Technical Guidance</span>
+                        </div>
+                        <div class="cd-highlight">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Career Preparation</span>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+            </section>
+
+            <!-- WHAT YOU'LL LEARN -->
+            <section class="cd-card" id="learn">
+                <h2><span class="cd-title-icon"><i class="fa-solid fa-graduation-cap"></i></span> What You'll Learn</h2>
+
+                <ol class="cd-learn">
+                    <li><span>01</span><p>Fundamentals and Core Concepts</p></li>
+                    <li><span>02</span><p>Essential Tools and Technologies</p></li>
+                    <li><span>03</span><p>Practical Exercises and Assignments</p></li>
+                    <li><span>04</span><p>Real-World Project Development</p></li>
+                    <li><span>05</span><p>Final Project and Career Preparation</p></li>
+                </ol>
+            </section>
+
+            <!-- ROADMAP -->
+            <section class="cd-card" id="roadmap">
+                <h2><span class="cd-title-icon"><i class="fa-solid fa-route"></i></span> Course Roadmap</h2>
+                <p class="cd-subtext">Every step takes you closer to your goal.</p>
+
+                {% if course.roadmap %}
+                <ol class="cd-timeline">
+
+                    {% for step in course.get_roadmap_steps %}
+                    <li class="cd-step">
+                        <span class="cd-step__num">{{ forloop.counter|stringformat:"02d" }}</span>
+                        <div class="cd-step__body">
+                            <small>STEP {{ forloop.counter|stringformat:"02d" }}</small>
+                            <h3>{{ step }}</h3>
+                        </div>
+                    </li>
                     {% endfor %}
 
+                    <li class="cd-step cd-step--finish">
+                        <span class="cd-step__num"><i class="fa-solid fa-flag-checkered"></i></span>
+                        <div class="cd-step__body">
+                            <small>COMPLETED</small>
+                            <h3>Course Completed! You're ready for the next step in your career.</h3>
+                        </div>
+                    </li>
+
+                </ol>
                 {% else %}
-
-                    <div class="highlight-item">
-                        <span class="check-icon">✓</span>
-                        Practical Training
-                    </div>
-
-                    <div class="highlight-item">
-                        <span class="check-icon">✓</span>
-                        Hands-on Projects
-                    </div>
-
-                    <div class="highlight-item">
-                        <span class="check-icon">✓</span>
-                        Technical Guidance
-                    </div>
-
-                    <div class="highlight-item">
-                        <span class="check-icon">✓</span>
-                        Career Preparation
-                    </div>
-
+                <p class="cd-empty">Course roadmap will be updated soon.</p>
                 {% endif %}
+            </section>
 
-            </div>
+        </div>
 
-        </section>
 
-        <!-- WHAT YOU WILL LEARN -->
-        <section class="content-card">
+        <!-- ========== RIGHT : PRICE + SUPPORT ========== -->
+        <aside class="cd-aside">
 
-            <h2>What You'll Learn</h2>
+            <div class="cd-card cd-price-card">
 
-            <div class="learning-list">
-
-                <div class="learning-item">
-                    <span>01</span>
-                    <p>Fundamentals and Core Concepts</p>
+                <div class="cd-price-card__head">
+                    <small>COURSE INVESTMENT</small>
+                    <h2>{{ course.name }}</h2>
                 </div>
 
-                <div class="learning-item">
-                    <span>02</span>
-                    <p>Essential Tools and Technologies</p>
-                </div>
+                <div class="cd-price-card__body">
 
-                <div class="learning-item">
-                    <span>03</span>
-                    <p>Practical Exercises and Assignments</p>
-                </div>
+                    <div class="cd-fee">
+                        <span class="cd-fee__label">Offer Fee</span>
+                        <div class="cd-fee__row">
+                            <strong class="cd-fee__offer">₹{{ course.offer_fee|floatformat:0 }}</strong>
+                            <del class="cd-fee__orig">₹{{ course.original_fee|floatformat:0 }}</del>
+                        </div>
 
-                <div class="learning-item">
-                    <span>04</span>
-                    <p>Real-World Project Development</p>
-                </div>
-
-                <div class="learning-item">
-                    <span>05</span>
-                    <p>Final Project and Career Preparation</p>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ROADMAP SECTION -->
-        <section class="content-card roadmap-section">
-            <div class="zigzag-heading">
-                <span class="roadmap-tag">YOUR LEARNING JOURNEY</span>
-                <h2>🗺️ Course Roadmap</h2>
-                <p>Every step takes you closer to your goal.</p>
-            </div>
-
-            {% if course.roadmap %}
-            <div class="zigzag-roadmap">
-                <div class="zigzag-center-line"></div>
-
-                {% for step in course.get_roadmap_steps %}
-                <div class="zigzag-step {% cycle 'step-left' 'step-right' %}">
-                    <div class="zigzag-card">
-                        <span class="zigzag-step-label">
-                            STEP {{ forloop.counter|stringformat:"02d" }}
-                        </span>
-                        <h3>{{ step }}</h3>
+                        {% if course.offer_label %}
+                            <span class="cd-save">{{ course.offer_label }}</span>
+                        {% elif course.original_fee > course.offer_fee %}
+                            <span class="cd-save">{{ course.discount_percent }}% OFF</span>
+                        {% endif %}
                     </div>
 
-                    <div class="zigzag-node">
-                        {{ forloop.counter|stringformat:"02d" }}
-                    </div>
-                </div>
-                {% endfor %}
+                    <ul class="cd-facts">
+                        <li>
+                            <span><i class="fa-regular fa-clock"></i> Duration</span>
+                            <strong>{{ course.duration }}</strong>
+                        </li>
+                        <li>
+                            <span><i class="fa-solid fa-bullseye"></i> Learning</span>
+                            <strong>Practical Training</strong>
+                        </li>
+                        <li>
+                            <span><i class="fa-solid fa-laptop-code"></i> Mode</span>
+                            <strong>Contact Institute</strong>
+                        </li>
+                    </ul>
 
-                <div class="zigzag-finish">
-                    <span>✓</span>
-                    <h3>Course Completed!</h3>
-                    <p>You're ready for the next step in your career.</p>
+                    <a href="{% url 'book_course' course.id %}" class="cd-btn cd-btn--gold cd-btn--block">
+                        Book This Course <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="{% url 'contact' %}" class="cd-btn cd-btn--outline cd-btn--block">
+                        Enquire Now
+                    </a>
+
+                    <p class="cd-note">
+                        Have questions? Contact our team for course details and batch information.
+                    </p>
+
                 </div>
             </div>
-            {% else %}
-            <p class="roadmap-empty">Course roadmap will be updated soon.</p>
-            {% endif %}
-        </section>
+
+            <div class="cd-card cd-support">
+                <span class="cd-support__icon"><i class="fa-solid fa-headset"></i></span>
+                <div>
+                    <h3>Need Help?</h3>
+                    <p>Our team can help you choose the right course.</p>
+                    <a href="tel:+919940909056"><i class="fa-solid fa-phone"></i> 99409 09056</a>
+                </div>
+            </div>
+
+        </aside>
 
     </div>
 
-    <!-- RIGHT SIDEBAR -->
-    <aside class="course-sidebar">
 
-        <div class="sidebar-card">
-
-            <span class="sidebar-label">COURSE INVESTMENT</span>
-
-            <h2>{{ course.name }}</h2>
-
-            <div class="price-section">
-
-                <div class="original-price">
-                    <span>Original Fee</span>
-                    <del>₹{{ course.original_fee|floatformat:0 }}</del>
-                </div>
-
-                <div class="offer-price">
-                    <span>Offer Fee</span>
-                    <strong>₹{{ course.offer_fee|floatformat:0 }}</strong>
-                </div>
-
-                {% if course.offer_label %}
-                    <span class="offer-badge">
-                        {{ course.offer_label }}
-                    </span>
-                {% elif course.original_fee > course.offer_fee %}
-                    <span class="offer-badge">
-                        {{ course.discount_percent }}% OFF
-                    </span>
-                {% endif %}
-
-            </div>
-
-            <div class="course-facts">
-
-                <div class="fact-row">
-                    <span>📚 Duration</span>
-                    <strong>{{ course.duration }}</strong>
-                </div>
-
-                <div class="fact-row">
-                    <span>🎯 Learning</span>
-                    <strong>Practical Training</strong>
-                </div>
-
-                <div class="fact-row">
-                    <span>💻 Mode</span>
-                    <strong>Contact Institute</strong>
-                </div>
-
-            </div>
-
-            <a href="{% url 'book_course' course.id %}"
-               class="book-button">
-                Book This Course →
-            </a>
-
-            <a href="{% url 'contact' %}" class="enquire-button">
-                Enquire Now
-            </a>
-
-            <p class="sidebar-note">
-                Have questions? Contact our team for course
-                details and batch information.
-            </p>
-
+    <!-- ================= BOTTOM CTA ================= -->
+    <section class="cd-cta">
+        <div>
+            <h2>Ready to Start Learning?</h2>
+            <p>Take the next step towards developing your skills.</p>
         </div>
 
-        <!-- SUPPORT CARD -->
-        <div class="support-card">
+        <a href="{% url 'book_course' course.id %}" class="cd-btn cd-btn--gold">
+            Book Your Course <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </section>
 
-            <h3>Need Help?</h3>
+</div>
+</div>
 
-            <p>
-                Our team can help you choose the right course.
-            </p>
 
-            <a href="tel:+919940909056">
-                Call CSC: 99409 09056
-            </a>
-
-        </div>
-
-    </aside>
-
-</main>
-
-<!-- BOTTOM CTA -->
-<section class="bottom-cta">
-
+<!-- ================= MOBILE STICKY BOOK BAR ================= -->
+<div class="cd-mobilebar">
     <div>
-        <h2>Ready to Start Learning?</h2>
-        <p>Take the next step towards developing your skills.</p>
+        <small>Offer Fee</small>
+        <strong>₹{{ course.offer_fee|floatformat:0 }}</strong>
     </div>
+    <a href="{% url 'book_course' course.id %}" class="cd-btn cd-btn--gold">Book Now</a>
+</div>
 
-    <a href="{% url 'book_course' course.id %}">
-        Book Your Course →
-    </a>
 
-</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* highlight the matching tab while scrolling */
+    var links = document.querySelectorAll('.cd-tabs a');
+    var map = {};
+
+    links.forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (el) map[id] = { link: a, el: el };
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting && map[entry.target.id]) {
+                links.forEach(function (l) { l.classList.remove('active'); });
+                map[entry.target.id].link.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    Object.keys(map).forEach(function (id) { obs.observe(map[id].el); });
+});
+</script>
+
 {% endblock %}
